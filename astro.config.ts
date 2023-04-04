@@ -6,7 +6,7 @@ import sitemap from "@astrojs/sitemap"
 import compress from "astro-compress"
 
 // Helper imports
-import { seoConfig } from "./utils/seoConfig"
+import { seoConfig } from "./lib/seoConfig"
 import svelte from "@astrojs/svelte"
 
 // https://astro.build/config

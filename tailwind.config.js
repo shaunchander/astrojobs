@@ -4,9 +4,12 @@ module.exports = {
 	theme: {
 		extend: {
 			screens: {
-				sm: "400px",
+				sm: "400px"
 			},
-		},
+			fontFamily: {
+				body: ["General Sans", "sans-serif"]
+			}
+		}
 	},
-	plugins: [],
-};
+	plugins: []
+}

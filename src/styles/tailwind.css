@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+	h1,
+	.h1 {
+		@apply text-5xl font-black;
+	}
+
+	h2,
+	.h2 {
+		@apply text-xl font-semibold;
+	}
+
+	.small {
+		@apply text-sm font-bold;
+	}
+
+	.btn {
+		@apply block rounded-lg px-12 py-4 text-center text-sm font-bold transition duration-300 ease-in-out;
+	}
+
+	.btn-primary {
+		@apply bg-orange-600 text-white hover:bg-orange-700;
+	}
+}

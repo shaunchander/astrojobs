@@ -3,10 +3,15 @@
 import { SEO } from "astro-seo"
 
 // Style imports
+import "@style/general-sans.css"
 import "@style/tailwind.css"
 
 // Helper imports
-import { seoConfig } from "@util/seoConfig"
+import { seoConfig } from "@lib/seoConfig"
+import { Header } from "@globals"
+
+// Asset imports
+import Background from "@svg/bg.svg"
 
 // Props
 export interface Props {
@@ -161,10 +166,17 @@ const {
 		<script is:inline src="/registerSW.js"></script>
 		<link rel="manifest" href="/manifest.webmanifest" />
 	</head>
-	<body class="min-h-screen flex flex-col w-full overflow-x-hidden">
+	<body
+		class="min-h-screen flex flex-col w-full overflow-x-hidden font-body text-slate-950 bg-zinc-100 relative"
+	>
+		<Header />
 		<main class="flex flex-1 flex-col h-[100%] w-full">
 			<slot />
 		</main>
+
+		<div class="absolute inset-0 pointer-events-none">
+			<img src={Background} alt="" class="w-full h-full" />
+		</div>
 
 		<script>
 			// This is a hack to get vite-plugin-pwa to generate a sw.js file.
