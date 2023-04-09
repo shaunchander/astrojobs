@@ -3,7 +3,7 @@
 </script>
 
 <header
-	class="sticky top-0 z-50 inset-x-0 p-6 bg-zinc-100 border-b border-x-slate-950/30 dark:bg-slate-950 dark:border-zinc-100/10"
+	class="sticky top-0 z-50 inset-x-0 p-6 bg-zinc-100 border-b border-x-slate-950/30 dark:bg-slate-950/30 dark:border-zinc-100/10"
 >
 	<Container>
 		<nav class="flex items-center justify-between">
