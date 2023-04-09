@@ -7,6 +7,8 @@ import { Layout } from "@globals"
 import { getJobOffers } from "@lib/sanity"
 
 const job_offers = await getJobOffers()
+
+export const prerender = true
 ---
 
 <Layout title="Astro PWA Starter">
