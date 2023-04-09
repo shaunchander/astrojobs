@@ -1,32 +1,20 @@
 {
-	"name": "astro-pwa-starter",
-	"version": "1.0.0",
-	"private": false,
+	"name": "astrojobs",
+	"version": "0.0.0",
+	"private": true,
+	"workspaces": [
+		"./apps/*"
+	],
 	"scripts": {
-		"dev": "astro dev",
-		"start": "astro dev",
-		"build": "astro build",
-		"preview": "astro preview",
-		"astro": "astro"
-	},
-	"devDependencies": {
-		"@astrojs/sitemap": "^1.2.1",
-		"@astrojs/tailwind": "^3.1.1",
-		"@typescript-eslint/eslint-plugin": "^5.57.1",
-		"@typescript-eslint/parser": "^5.57.1",
-		"astro": "^2.1.9",
-		"astro-compress": "^1.1.35",
-		"astro-seo": "^0.7.2",
-		"eslint": "^8.37.0",
-		"eslint-plugin-astro": "^0.26.1",
-		"eslint-plugin-jsx-a11y": "^6.7.1",
-		"prettier": "^2.8.7",
-		"prettier-plugin-astro": "^0.8.0",
-		"prettier-plugin-tailwindcss": "^0.2.6",
-		"typescript": "^5.0.3"
+		"build": "dotenv -- turbo run build",
+		"dev": "dotenv -- turbo run dev",
+		"lint": "turbo run lint",
+		"format": "prettier --write \"**/*.{ts,tsx,md}\""
 	},
 	"dependencies": {
-		"@astrojs/svelte": "^2.1.0",
-		"svelte": "^3.58.0"
+		"turbo": "^1.8.8"
+	},
+	"devDependencies": {
+		"dotenv-cli": "^7.2.1"
 	}
 }
