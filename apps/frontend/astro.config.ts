@@ -9,6 +9,8 @@ import compress from "astro-compress"
 import { seoConfig } from "./lib/seoConfig"
 import svelte from "@astrojs/svelte"
 
+import cloudflare from "@astrojs/cloudflare"
+
 // https://astro.build/config
 export default defineConfig({
 	site: seoConfig.baseURL,
@@ -22,5 +24,7 @@ export default defineConfig({
 		sitemap(),
 		compress(),
 		svelte()
-	]
+	],
+	output: "server",
+	adapter: cloudflare()
 })
