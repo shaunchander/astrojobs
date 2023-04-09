@@ -1,0 +1,24 @@
+---
+import { Layout } from "@globals"
+import { Section, Container } from "@component/utils"
+import { PostOfferForm } from "@component/PostOfferForm"
+---
+
+<Layout
+	title="Post an offer"
+	description="Looking to onboard an Astro developer for your next project? Post an offer!"
+>
+	<Section id="post-an-offer">
+		<Container>
+			<div class="max-w-3xl mx-auto space-y-8">
+				<div class="space-y-4">
+					<h1 class="text-center">
+						Post an <span class="text-orange-600">offer</span>
+					</h1>
+					<p class="h2 text-center">We have 10 free spots left!</p>
+				</div>
+				<PostOfferForm />
+			</div>
+		</Container>
+	</Section>
+</Layout>
