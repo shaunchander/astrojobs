@@ -28,7 +28,8 @@ export const post: APIRoute = async (ctx) => {
 			salary_left_bound: Number(formData.get("salary_left_bound")),
 			salary_right_bound: Number(formData.get("salary_right_bound")),
 			meta_framework: formData.get("meta_framework"),
-			email: formData.get("email")
+			email: formData.get("email"),
+			stripe_id: formData.get("stripe_id")
 		}
 		console.log("Posting job offer...")
 		const _id = await postJobOffer(jobOffer)

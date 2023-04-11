@@ -3,11 +3,12 @@
 
 	let companyLogo = ""
 	let error = false
-	let success = false
+	export let freeSlots: number
 
 	const handleFileUpload = (e: any) => {
 		if (e.target.files.length === 0) return
 
+		// @ts-ignore
 		if ((e.target.files[0].size / 1024 / 1024).toFixed(2) > 2) {
 			alert("File size is too big!")
 			return
@@ -22,16 +23,25 @@
 
 	const handleSubmit = async (e: SubmitEvent) => {
 		e.preventDefault()
-		let response
 		try {
-			response = await fetch("/server/post-an-offer", {
-				method: "POST",
-				body: new FormData(e.target as HTMLFormElement)
-			})
-			if (!response.ok) {
-				throw new Error(await response.json())
+			let stripeData
+			if (freeSlots === 0) {
+				stripeData = await fetch("/server/generate-stripe-checkout")
+				stripeData = await stripeData.json()
 			}
-			success = true
+
+			const formData = new FormData(e.target as HTMLFormElement)
+			formData.append("stripe_id", stripeData.id)
+
+			const postOfferData = await fetch("/server/post-an-offer", {
+				method: "POST",
+				body: formData
+			})
+			if (!postOfferData.ok) {
+				throw new Error(await postOfferData.json())
+			}
+
+			window.open(stripeData.url, "_blank")
 		} catch (err) {
 			console.log(err)
 			error = true
@@ -218,7 +228,7 @@
 	<p class="text-red-600">
 		An error occured when submitting the form, please try again. If this keeps
 		happening, please email your offer to <a href="mailto:support@astrojobs.net"
-			>support@astrojobs.net</a
+			><strong>support@astrojobs.net</strong></a
 		>
 	</p>
 {/if}

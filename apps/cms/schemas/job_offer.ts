@@ -67,5 +67,13 @@ export const job_offer = defineType({
 			name: 'listing_url',
 			type: 'url',
 		}),
+		defineField({
+			name: 'stripe_id',
+			type: 'string',
+		}),
+		defineField({
+			name: 'is_active',
+			type: 'boolean',
+		}),
 	],
 })

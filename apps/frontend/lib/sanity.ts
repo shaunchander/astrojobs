@@ -16,7 +16,7 @@ const builder = imageUrlBuilder(client)
 
 export const getJobOffers = async () => {
 	const job_offers: ComponentType<JobOffer>[] = await client.fetch(
-		'*[_type == "job_offer"]'
+		'*[_type == "job_offer" && is_active == true]'
 	)
 	return job_offers
 }
@@ -58,4 +58,12 @@ export const decrementFreeSlots = async () => {
 			)
 		}
 	}
+}
+
+export const activateJobOffer = async (stripeId: string) => {
+	const jobOffer = await client.fetch(
+		`*[_type == "job_offer" && stripe_id=="${stripeId}"]`
+	)
+
+	await client.patch(jobOffer._id).set({ is_active: true })
 }
