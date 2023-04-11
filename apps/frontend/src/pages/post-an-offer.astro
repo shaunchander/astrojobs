@@ -2,6 +2,9 @@
 import { Layout } from "@globals"
 import { Section, Container } from "@component/utils"
 import { PostOfferForm } from "@component/PostOfferForm"
+import { getSiteConfig } from "@lib/sanity"
+
+const site_config = await getSiteConfig()
 
 export const prerender = true
 ---
@@ -17,9 +20,20 @@ export const prerender = true
 					<h1 class="text-center">
 						Post an <span class="text-orange-600">offer</span>
 					</h1>
-					<p class="h2 text-center">
-						We have <span class="text-orange-600">10</span> free spots left!
-					</p>
+					{
+						site_config.free_slots > 0 ? (
+							<p class="h2 text-center">
+								We have{" "}
+								<span class="text-orange-600">{site_config.free_slots}</span>{" "}
+								free spots left. Claim yours now!
+							</p>
+						) : (
+							<p class="h2 text-center">
+								Post an offer for 30 days starting at{" "}
+								<span class="text-orange-600">$30</span>.
+							</p>
+						)
+					}
 				</div>
 				<div>
 					<PostOfferForm client:visible />

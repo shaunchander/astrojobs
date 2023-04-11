@@ -6,6 +6,10 @@ export const job_offer = defineType({
 	type: 'document',
 	fields: [
 		defineField({
+			name: 'email',
+			type: 'string',
+		}),
+		defineField({
 			name: 'company_name',
 			type: 'string',
 		}),

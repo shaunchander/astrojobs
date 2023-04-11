@@ -1,7 +1,6 @@
 ---
 // Component imports
 import { JobOffer } from "@component/JobOffer"
-import { Hero } from "@component/Hero"
 import { Container, Section } from "@component/utils"
 import { Layout } from "@globals"
 import { getJobOffers } from "@lib/sanity"
@@ -14,13 +13,36 @@ export const prerender = true
 <Layout title="Astro PWA Starter">
 	<Section id="hero">
 		<Container>
-			<Hero />
+			<div class="space-y-6 flex flex-col items-center">
+				<div class="text-center space-y-4">
+					<h1>
+						🚀 Astro<span class="text-orange-600">Jobs</span>
+					</h1>
+					<p class="h2 max-w-[525px]">
+						Find companies hiring Astro roles or post an offer if you’re looking
+						for an Astro developer!
+					</p>
+				</div>
+				<button class="btn btn-primary">✉️ Get new job notifications</button>
+			</div>
 		</Container>
 	</Section>
 	<Section id="offers">
 		<Container>
 			<div class="grid gap-4 lg:max-w-4xl mx-auto">
 				{job_offers.map((offer) => <JobOffer client:visible {...offer} />)}
+				{
+					job_offers.length === 0 && (
+						<div class="space-y-5 rounded-lg border-2 border-dashed border-white/10 bg-slate-950/40 p-6 backdrop-blur-lg">
+							<p class="text-center text-xl font-semibold text-white/60">
+								No jobs listed yet!
+							</p>
+							<a href="/post-an-offer" class="btn btn-primary mx-auto max-w-xs">
+								💼 Post an offer
+							</a>
+						</div>
+					)
+				}
 			</div>
 		</Container>
 	</Section>

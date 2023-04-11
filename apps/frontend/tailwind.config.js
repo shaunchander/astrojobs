@@ -10,6 +10,5 @@ module.exports = {
 				body: ["General Sans", "sans-serif"]
 			}
 		}
-	},
-	plugins: []
+	}
 }
