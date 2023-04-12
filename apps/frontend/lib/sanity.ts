@@ -4,12 +4,13 @@ import { UploadBody, createClient } from "@sanity/client"
 import imageUrlBuilder from "@sanity/image-url"
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types"
 
+console.log(import.meta.env)
 const client = createClient({
-	projectId: import.meta.env.SANITY_PROJECT_ID ?? "",
-	dataset: import.meta.env.SANITY_DATASET ?? "",
+	projectId: import.meta.env.SANITY_PROJECT_ID,
+	dataset: import.meta.env.SANITY_DATASET,
 	useCdn: import.meta.env.NODE_ENV === "production",
-	apiVersion: "2023-04-05" ?? "",
-	token: import.meta.env.SANITY_READ_TOKEN ?? ""
+	apiVersion: "2023-04-05",
+	token: import.meta.env.SANITY_READ_TOKEN
 })
 
 const builder = imageUrlBuilder(client)

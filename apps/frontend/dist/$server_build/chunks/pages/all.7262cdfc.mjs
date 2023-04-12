@@ -90,12 +90,13 @@ function add_attribute(name, value, boolean) {
     return ` ${name}${assignment}`;
 }
 
+console.log(Object.assign({"BASE_URL":"\"/\"","MODE":"production","DEV":false,"PROD":true,"SSR":true,"SITE":"\"https://astrojobs.net\"","ASSETS_PREFIX":undefined}, { SANITY_PROJECT_ID: ({}).SANITY_PROJECT_ID, SANITY_DATASET: ({}).SANITY_DATASET, SANITY_READ_TOKEN: ({}).SANITY_READ_TOKEN, NODE: ({}).NODE, _: ({})._, NODE_ENV: "production" }));
 const client = createClient({
-  projectId: ({}).SANITY_PROJECT_ID ?? "",
-  dataset: ({}).SANITY_DATASET ?? "",
+  projectId: ({}).SANITY_PROJECT_ID,
+  dataset: ({}).SANITY_DATASET,
   useCdn: "production" === "production",
   apiVersion: "2023-04-05",
-  token: ({}).SANITY_READ_TOKEN ?? ""
+  token: ({}).SANITY_READ_TOKEN
 });
 const builder = imageUrlBuilder(client);
 const getJobOffers = async () => {
