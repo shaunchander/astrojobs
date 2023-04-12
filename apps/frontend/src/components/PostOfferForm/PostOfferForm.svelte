@@ -2,7 +2,7 @@
 	import Image from "@svg/icons/image.svelte"
 
 	let companyLogo = ""
-	let error = false
+	let status = ""
 	export let freeSlots: number
 
 	const handleFileUpload = (e: any) => {
@@ -22,16 +22,18 @@
 	}
 
 	const handleSubmit = async (e: SubmitEvent) => {
+		status = "loading"
 		e.preventDefault()
+		const formData = new FormData(e.target as HTMLFormElement)
+		formData.append("free_slots", freeSlots.toString())
+
 		try {
 			let stripeData
 			if (freeSlots === 0) {
 				stripeData = await fetch("/server/generate-stripe-checkout")
 				stripeData = await stripeData.json()
+				formData.append("stripe_id", stripeData.id)
 			}
-
-			const formData = new FormData(e.target as HTMLFormElement)
-			formData.append("stripe_id", stripeData.id)
 
 			const postOfferData = await fetch("/server/post-an-offer", {
 				method: "POST",
@@ -40,16 +42,33 @@
 			if (!postOfferData.ok) {
 				throw new Error(await postOfferData.json())
 			}
-
-			window.open(stripeData.url, "_blank")
+			if (freeSlots === 0) {
+				window.open(stripeData.url, "_blank")
+			} else {
+				window.location.replace("/offer-posted")
+				const { _id } = await postOfferData.json()
+				await fetch("/server/send-email", {
+					method: "POST",
+					body: JSON.stringify({ _id }),
+					headers: {
+						"Content-Type": "application/json"
+					}
+				})
+			}
+			status = "success"
 		} catch (err) {
 			console.log(err)
-			error = true
+			status = "error"
 		}
 	}
 </script>
 
-<form method="POST" class="grid gap-4" on:submit={handleSubmit}>
+<form
+	method="POST"
+	class="grid gap-4"
+	on:submit={handleSubmit}
+	autocomplete="off"
+>
 	<label for="email" class="block space-y-2 cursor-pointer">
 		<span class="small">Your email*</span>
 		<span class="tiny block text-white/60"
@@ -145,7 +164,10 @@
 		</div>
 	</label>
 	<label for="salary_left_bound" class="block space-y-2 cursor-pointer">
-		<span class="small">Salary (lower end)</span>
+		<div>
+			<span class="small">Salary (lower end)</span>
+			<span class="tiny block text-white/60">Salaries should be in USD.</span>
+		</div>
 		<input
 			id="salary_left_bound"
 			name="salary_left_bound"
@@ -156,7 +178,10 @@
 		/>
 	</label>
 	<label for="salary_right_bound" class="block space-y-2 cursor-pointer">
-		<span class="small">Salary (upper end)</span>
+		<div>
+			<span class="small">Salary (upper end)</span>
+			<span class="tiny block text-white/60">Salaries should be in USD.</span>
+		</div>
 		<input
 			id="salary_right_bound"
 			name="salary_right_bound"
@@ -186,7 +211,8 @@
 		<div>
 			<span class="small block">Listing Url*</span>
 			<span class="tiny block text-white/60"
-				>This is where applicants should submit their application.</span
+				>This is where applicants should submit their application (must be a
+				valid URL).</span
 			>
 		</div>
 
@@ -197,6 +223,7 @@
 			placeholder="ex: https://..."
 			required
 			class="bg-slate-950/30 appearance-none block w-full border border-white/10 rounded-lg p-5"
+			pattern="^(http(s)?:\/\/)+[\w\-\._~:\/?#[\]@!\$&'\(\)\*\+,;=.]+$"
 		/>
 	</label>
 	<label for="is_remote" class="flex items-center space-x-2 cursor-pointer">
@@ -217,14 +244,24 @@
 		<input id="is_full_time" name="is_full_time" type="checkbox" />
 	</label>
 	<p class="text-white/60">(*) indicates a required field.</p>
-	<button type="submit" class="btn btn-primary mt-5">Submit</button>
+	<button
+		type="submit"
+		class="btn btn-primary mt-5"
+		disabled={status === "loading"}
+	>
+		{#if status === "loading"}Loading...
+		{:else}Submit
+		{/if}
+	</button>
 </form>
 
-{#if error}
-	<p class="text-green-600">Your offer was submitted successfully!</p>
+{#if status === "success"}
+	{#if freeSlots > 0}
+		<p class="text-green-600">Your offer was submitted successfully!</p>
+	{/if}
 {/if}
 
-{#if error}
+{#if status === "error"}
 	<p class="text-red-600">
 		An error occured when submitting the form, please try again. If this keeps
 		happening, please email your offer to <a href="mailto:support@astrojobs.net"

@@ -27,10 +27,10 @@
 	class="rounded-lg border border-zinc-200 bg-zinc-50 dark:bg-slate-950/30 backdrop-blur-lg dark:border-zinc-200/10 p-6 flex flex-col gap-y-5 lg:flex-row lg:items-center lg:gap-x-5 lg:gap-y-0 dark:hover:bg-slate-900/30 transition duration-300 ease-in-out"
 >
 	<div
-		class="h-16 w-16 rounded-full contain object-center bg-gradient-to-br from-white/10 to-transparent border border-white/10 p-1 flex items-center justify-center"
+		class="h-16 w-16 rounded-full contain object-center bg-gradient-to-br from-white/10 to-transparent border border-white/10 p-3 flex items-center justify-center"
 	>
 		<img
-			class="rounded-full object-contain object-center"
+			class="object-contain object-center"
 			src={resolveImageUrl(company_logo)}
 			width={64}
 			height={64}

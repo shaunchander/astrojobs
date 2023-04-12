@@ -4,13 +4,14 @@ import { JobOffer } from "@component/JobOffer"
 import { Container, Section } from "@component/utils"
 import { Layout } from "@globals"
 import { getJobOffers } from "@lib/sanity"
+import { DeleteOffer } from "@component/DeleteOffer"
 
 const job_offers = await getJobOffers()
 
 export const prerender = true
 ---
 
-<Layout title="Astro PWA Starter">
+<Layout title="AstroJobs">
 	<Section id="hero">
 		<Container>
 			<div class="space-y-6 flex flex-col items-center">
@@ -29,12 +30,12 @@ export const prerender = true
 	</Section>
 	<Section id="offers">
 		<Container>
-			<div class="grid gap-4 lg:max-w-4xl mx-auto">
+			<div class="grid gap-4 lg:max-w-3xl mx-auto">
 				{job_offers.map((offer) => <JobOffer client:visible {...offer} />)}
 				{
 					job_offers.length === 0 && (
-						<div class="space-y-5 rounded-lg border-2 border-dashed border-white/10 bg-slate-950/40 p-6 backdrop-blur-lg">
-							<p class="text-center text-xl font-semibold text-white/60">
+						<div class="space-y-10 rounded-lg border-2 border-dashed border-white/10 bg-slate-950/40 p-6 backdrop-blur-lg">
+							<p class="text-center text-xl font-semibold">
 								No jobs listed yet!
 							</p>
 							<a href="/post-an-offer" class="btn btn-primary mx-auto max-w-xs">
@@ -46,4 +47,5 @@ export const prerender = true
 			</div>
 		</Container>
 	</Section>
+	<DeleteOffer client:load />
 </Layout>

@@ -3,6 +3,7 @@
  */
 export const seoConfig = {
 	baseURL: "https://astrojobs.net", // Change this to your production URL.
+
 	description:
 		"Find jobs or post offers centered around Astro, the framework that makes the web faster.", // Change this to be your website's description.
 	type: "website",

@@ -3,7 +3,7 @@ import { Container, Section } from "@component/utils"
 import { Layout } from "@globals"
 ---
 
-<Layout title="Offer Posted.">
+<Layout title="Offer Posted">
 	<Section id="hero">
 		<Container>
 			<div class="text-center max-w-2xl mx-auto space-y-6">
@@ -18,5 +18,14 @@ import { Layout } from "@globals"
 				</div>
 			</div>
 		</Container>
+		<canvas id="my-canvas" class="fixed inset-0 pointer-events-none"></canvas>
 	</Section>
 </Layout>
+
+<script>
+	import ConfettiGenerator from "confetti-js"
+
+	var confettiSettings = { target: "my-canvas" }
+	var confetti = new ConfettiGenerator(confettiSettings)
+	confetti.render()
+</script>

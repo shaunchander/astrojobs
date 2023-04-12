@@ -27,6 +27,7 @@ export const post: APIRoute = async (ctx) => {
 	switch ((await event).type) {
 		case "checkout.session.completed":
 			console.log("Activating job offer...")
+			// @ts-ignore
 			await activateJobOffer((await event).data.object.id)
 			console.log("Job offer activated...")
 			return {

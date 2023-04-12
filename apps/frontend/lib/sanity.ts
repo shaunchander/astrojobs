@@ -16,7 +16,7 @@ const builder = imageUrlBuilder(client)
 
 export const getJobOffers = async () => {
 	const job_offers: ComponentType<JobOffer>[] = await client.fetch(
-		'*[_type == "job_offer" && is_active == true]'
+		'*[_type == "job_offer" && is_active == true] | order(_createdAt desc)'
 	)
 	return job_offers
 }
@@ -35,6 +35,10 @@ export const resolveImageUrl = (image: SanityImageSource) => {
 export const postJobOffer = async (jobOffer: any) => {
 	const { _id } = await client.create(jobOffer)
 	return _id
+}
+
+export const deleteJobOffer = async (_id: string) => {
+	await client.delete(_id)
 }
 
 export const postAsset = async (image: UploadBody) => {
