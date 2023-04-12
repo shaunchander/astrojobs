@@ -6,16 +6,12 @@
 		"./apps/*"
 	],
 	"scripts": {
-		"build": "dotenv -- turbo run build",
-		"dev": "dotenv -- turbo run dev",
+		"build": "turbo run build",
+		"dev": "turbo run dev",
 		"lint": "turbo run lint",
 		"format": "prettier --write \"**/*.{ts,tsx,md}\""
 	},
 	"dependencies": {
-		"turbo": "^1.8.8"
-	},
-	"devDependencies": {
-		"@tailwindcss/forms": "^0.5.3",
-		"dotenv-cli": "^7.2.1"
+		"turbo": "^1.9.0"
 	}
 }
