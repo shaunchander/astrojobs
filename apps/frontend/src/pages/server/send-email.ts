@@ -23,9 +23,9 @@ export const post: APIRoute = async (ctx) => {
 		}
 	}
 	try {
-		console.log("Sending email...")
+		console.log("Sending email to", body.email, "...")
 		mg.messages.create("mg.astrojobs.net", {
-			to: "shaunchander@gmail.com",
+			to: body.email,
 			from: "Astro Jobs <support@astrojobs.net>",
 			subject: "Astro Jobs - Your job offer has been posted!",
 			template: "post-success",

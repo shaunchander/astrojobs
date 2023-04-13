@@ -257,12 +257,12 @@
 
 {#if status === "success"}
 	{#if freeSlots > 0}
-		<p class="text-green-600">Your offer was submitted successfully!</p>
+		<p class="text-green-600 mt-2">Your offer was submitted successfully!</p>
 	{/if}
 {/if}
 
 {#if status === "error"}
-	<p class="text-red-600">
+	<p class="text-red-600 mt-2">
 		An error occured when submitting the form, please try again. If this keeps
 		happening, please email your offer to <a href="mailto:support@astrojobs.net"
 			><strong>support@astrojobs.net</strong></a
