@@ -1,4 +1,4 @@
-import{c as Xe}from"./JobOffer.c24d7eb6.js";function qe(e,t){for(var n=0;n<t.length;n++){const r=t[n];if("string"!=typeof r&&!Array.isArray(r))for(const t in r)if("default"!==t&&!(t in e)){const n=Object.getOwnPropertyDescriptor(r,t);n&&Object.defineProperty(e,t,n.get?n:{enumerable:!0,get:()=>r[t]})}}return Object.freeze(Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}))}var ee={},Ue={get exports(){return ee},set exports(e){ee=e}};
+import{c as Xe}from"./JobOffer.514d81cf.js";function qe(e,t){for(var n=0;n<t.length;n++){const r=t[n];if("string"!=typeof r&&!Array.isArray(r))for(const t in r)if("default"!==t&&!(t in e)){const n=Object.getOwnPropertyDescriptor(r,t);n&&Object.defineProperty(e,t,n.get?n:{enumerable:!0,get:()=>r[t]})}}return Object.freeze(Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}))}var ee={},Ue={get exports(){return ee},set exports(e){ee=e}};
 /** @license
  * eventsource.js
  * Available under MIT License (MIT)

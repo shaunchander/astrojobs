@@ -1,0 +1,1 @@
+import{J as e}from"./JobOffer.514d81cf.js";import"./index.c2f6a559.js";export{e as JobOffer};
