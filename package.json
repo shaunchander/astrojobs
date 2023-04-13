@@ -12,6 +12,8 @@
 		"format": "prettier --write \"**/*.{ts,tsx,md}\""
 	},
 	"dependencies": {
+		"@astrojs/vercel": "^3.2.3",
+		"astro": "^2.3.0",
 		"turbo": "^1.8.8"
 	}
 }
