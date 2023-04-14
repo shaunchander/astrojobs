@@ -22,8 +22,5 @@ export default defineConfig({
 		sitemap(),
 		compress(),
 		svelte()
-	],
-	vite: {
-		envDir: "./../../"
-	}
+	]
 })
