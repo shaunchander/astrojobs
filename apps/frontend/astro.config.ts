@@ -26,7 +26,8 @@ export default defineConfig({
 		svelte()
 	],
 	output: "server",
-	adapter: cloudflare({
-		mode: "directory"
-	})
+	adapter: cloudflare(),
+	vite: {
+		envDir: "./../../"
+	}
 })
