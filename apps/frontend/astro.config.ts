@@ -9,7 +9,7 @@ import compress from "astro-compress"
 import { seoConfig } from "./lib/seoConfig"
 import svelte from "@astrojs/svelte"
 
-import vercel from "@astrojs/vercel/serverless"
+import cloudflare from "@astrojs/cloudflare"
 
 // https://astro.build/config
 export default defineConfig({
@@ -26,7 +26,7 @@ export default defineConfig({
 		svelte()
 	],
 	output: "server",
-	adapter: vercel(),
+	adapter: cloudflare(),
 	vite: {
 		envDir: "./../../"
 	}
