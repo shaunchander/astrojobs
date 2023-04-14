@@ -27,6 +27,7 @@
 	"dependencies": {
 		"@astrojs/cloudflare": "^6.2.2",
 		"@astrojs/svelte": "^2.1.0",
+		"@astrojs/vercel": "^3.2.3",
 		"@sanity/client": "^5.4.2",
 		"@sanity/image-url": "^1.0.2",
 		"confetti-js": "^0.0.18",
