@@ -11,7 +11,7 @@ export const get: APIRoute = async () => {
 		const session = await stripe.checkout.sessions.create({
 			line_items: [
 				{
-					price: "price_1Mv9yrHOTwAqSFb2L7Vq4uQT",
+					price: import.meta.env.STRIPE_PRODUCT,
 					quantity: 1
 				}
 			],
