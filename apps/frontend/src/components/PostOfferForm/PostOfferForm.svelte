@@ -73,7 +73,7 @@
 		<span class="small">Your email*</span>
 		<span class="tiny block text-white/60"
 			>We'll send you a confirmation email and a manual delete URL to your
-			inbox. inbox.</span
+			inbox.</span
 		>
 		<input
 			id="email"
