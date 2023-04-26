@@ -71,7 +71,7 @@
 >
 	<label for="email" class="block space-y-2 cursor-pointer">
 		<span class="small">Your email*</span>
-		<span class="tiny block text-white/60"
+		<span class="tiny block dark:text-white/60"
 			>We'll send you a confirmation email and a manual delete URL to your
 			inbox.</span
 		>
@@ -81,7 +81,7 @@
 			type="email"
 			placeholder="Your email..."
 			required
-			class="bg-slate-950/30 appearance-none block w-full border border-white/10 rounded-lg p-5"
+			class="dark:bg-slate-950/30 appearance-none block w-full border border-white/10 rounded-lg p-5"
 		/>
 	</label>
 	<label for="company_name" class="block space-y-2 cursor-pointer">
@@ -92,14 +92,14 @@
 			type="text"
 			placeholder="Your company name..."
 			required
-			class="bg-slate-950/30 appearance-none block w-full border border-white/10 rounded-lg p-5"
+			class="dark:bg-slate-950/30 appearance-none block w-full border border-white/10 rounded-lg p-5"
 		/>
 	</label>
 	<label for="company_logo" class="block space-y-2 cursor-pointer">
 		<span class="small">Company Logo*</span>
 
 		<div
-			class="bg-slate-950/30 appearance-none flex flex-col justify-center items-center w-full border-2 border-dashed border-white/10 rounded-lg h-64 text-stone-500 relative p-6"
+			class="dark:bg-slate-950/30 bg-white border-gray-400 appearance-none flex flex-col justify-center items-center w-full border-2 border-dashed border-white/10 rounded-lg h-64 text-stone-500 relative p-6"
 		>
 			<input
 				id="company_logo"
@@ -136,13 +136,13 @@
 			type="text"
 			placeholder="ex: Senior Frontend Engineer"
 			required
-			class="bg-slate-950/30 appearance-none block w-full border border-white/10 rounded-lg p-5"
+			class="dark:bg-slate-950/30 appearance-none block w-full border border-white/10 rounded-lg p-5"
 		/>
 	</label>
 	<label for="meta_framework" class="block space-y-2 cursor-pointer">
 		<div>
 			<span class="small">Meta framework</span>
-			<span class="tiny block text-white/60"
+			<span class="tiny block dark:text-white/60"
 				>If you need a developer that knows a particular framework, set it here.</span
 			>
 		</div>
@@ -150,7 +150,7 @@
 			<select
 				id="meta_framework"
 				name="meta_framework"
-				class="bg-slate-950/30 appearance-none block w-full border border-white/10 rounded-lg p-5"
+				class="dark:bg-slate-950/30 appearance-none block w-full border border-white/10 rounded-lg p-5"
 			>
 				<option selected value> -- </option>
 				<option value="react">React</option>
@@ -166,7 +166,9 @@
 	<label for="salary_left_bound" class="block space-y-2 cursor-pointer">
 		<div>
 			<span class="small">Salary (lower end)</span>
-			<span class="tiny block text-white/60">Salaries should be in USD.</span>
+			<span class="tiny block dark:text-white/60"
+				>Salaries should be in USD.</span
+			>
 		</div>
 		<input
 			id="salary_left_bound"
@@ -174,13 +176,15 @@
 			type="number"
 			placeholder="ex: 95000"
 			min="0"
-			class="bg-slate-950/30 appearance-none block w-full border border-white/10 rounded-lg p-5"
+			class="dark:bg-slate-950/30 appearance-none block w-full border border-white/10 rounded-lg p-5"
 		/>
 	</label>
 	<label for="salary_right_bound" class="block space-y-2 cursor-pointer">
 		<div>
 			<span class="small">Salary (upper end)</span>
-			<span class="tiny block text-white/60">Salaries should be in USD.</span>
+			<span class="tiny block dark:text-white/60"
+				>Salaries should be in USD.</span
+			>
 		</div>
 		<input
 			id="salary_right_bound"
@@ -188,14 +192,14 @@
 			type="number"
 			placeholder="ex: 150000"
 			min="0"
-			class="bg-slate-950/30 appearance-none block w-full border border-white/10 rounded-lg p-5"
+			class="dark:bg-slate-950/30 appearance-none block w-full border border-white/10 rounded-lg p-5"
 		/>
 	</label>
 
 	<label for="location" class="block space-y-2 cursor-pointer">
 		<div>
 			<span class="small block">Location</span>
-			<span class="tiny block text-white/60"
+			<span class="tiny block dark:text-white/60"
 				>If this position is remote, you don't need to fill this field.</span
 			>
 		</div>
@@ -204,13 +208,13 @@
 			name="location"
 			type="text"
 			placeholder="ex: San Fransisco, CA"
-			class="bg-slate-950/30 appearance-none block w-full border border-white/10 rounded-lg p-5"
+			class="dark:bg-slate-950/30 appearance-none block w-full border border-white/10 rounded-lg p-5"
 		/>
 	</label>
 	<label for="listing_url" class="block space-y-2 cursor-pointer">
 		<div>
 			<span class="small block">Listing Url*</span>
-			<span class="tiny block text-white/60"
+			<span class="tiny block dark:text-white/60"
 				>This is where applicants should submit their application (must be a
 				valid URL).</span
 			>
@@ -222,7 +226,7 @@
 			type="text"
 			placeholder="ex: https://..."
 			required
-			class="bg-slate-950/30 appearance-none block w-full border border-white/10 rounded-lg p-5"
+			class="dark:bg-slate-950/30 appearance-none block w-full border border-white/10 rounded-lg p-5"
 			pattern="^(http(s)?:\/\/)+[\w\-\._~:\/?#[\]@!\$&'\(\)\*\+,;=.]+$"
 		/>
 	</label>
@@ -243,7 +247,7 @@
 		<span class="small">Is this position full-time?</span>
 		<input id="is_full_time" name="is_full_time" type="checkbox" />
 	</label>
-	<p class="text-white/60">(*) indicates a required field.</p>
+	<p class="dark:text-white/60">(*) indicates a required field.</p>
 	<button
 		type="submit"
 		class="btn btn-primary mt-5"
